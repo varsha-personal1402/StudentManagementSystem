@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 // Base URL of the backend API
-const BASE_URL = 'http://localhost:8080/api/students';
+const BASE_URL = 'https://studentmanagementsystem-production-6a5a.up.railway.app/api/students';
 
 class StudentService {
   // Get all students
