@@ -1,38 +1,19 @@
-import axios from 'axios';
+import axios from "axios";
 
-// Ideally use environment variable, fallback to default
-const BASE_URL = process.env.REACT_APP_BASE_URL || "https://studentmanagementsystem-production-ab75.up.railway.app/api/students";
+const axiosInstance = axios.create({
+  baseURL: process.env.REACT_APP_BASE_URL || "https://studentmanagementsystem-production-ab75.up.railway.app/api/students",
+  withCredentials: true, // important if your backend requires credentials
+  headers: {
+    "Content-Type": "application/json"
+  }
+});
 
 class StudentService {
-  getAllStudents() {
-    return axios.get(BASE_URL)
-      .then(res => res.data)
-      .catch(err => { console.error("Error fetching students:", err); throw err; });
-  }
-
-  getStudentById(id) {
-    return axios.get(`${BASE_URL}/${id}`)
-      .then(res => res.data)
-      .catch(err => { console.error(`Error fetching student ${id}:`, err); throw err; });
-  }
-
-  addStudent(student) {
-    return axios.post(BASE_URL, student)
-      .then(res => res.data)
-      .catch(err => { console.error("Error adding student:", err); throw err; });
-  }
-
-  updateStudent(id, student) {
-    return axios.put(`${BASE_URL}/${id}`, student)
-      .then(res => res.data)
-      .catch(err => { console.error(`Error updating student ${id}:`, err); throw err; });
-  }
-
-  deleteStudent(id) {
-    return axios.delete(`${BASE_URL}/${id}`)
-      .then(res => res.data)
-      .catch(err => { console.error(`Error deleting student ${id}:`, err); throw err; });
-  }
+  getAllStudents() { return axiosInstance.get("/").then(res => res.data); }
+  getStudentById(id) { return axiosInstance.get(`/${id}`).then(res => res.data); }
+  addStudent(student) { return axiosInstance.post("/", student).then(res => res.data); }
+  updateStudent(id, student) { return axiosInstance.put(`/${id}`, student).then(res => res.data); }
+  deleteStudent(id) { return axiosInstance.delete(`/${id}`).then(res => res.data); }
 }
 
 export default new StudentService();
