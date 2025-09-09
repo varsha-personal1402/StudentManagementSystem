@@ -2,12 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import App from './App';
-import cors from "cors";
 
-App.use(cors({
-  origin: "https://student-manag-system.netlify.app", 
-  credentials: true
-}));
 
 
 
