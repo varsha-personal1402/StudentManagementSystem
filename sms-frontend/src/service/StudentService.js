@@ -1,7 +1,14 @@
 import axios from 'axios';
 
 // Base URL of the backend API
-const BASE_URL = process.env.REACT_APP_BASE_URL;
+//const BASE_URL = process.env.REACT_APP_BASE_URL;
+
+// src/StudentService.js
+const BASE_URL =
+  process.env.NODE_ENV === "production"
+    ? "https://your-railway-backend.up.railway.app/api/students"
+    : "http://localhost:8080/api/students";
+
 
 class StudentService {
   // Get all students
