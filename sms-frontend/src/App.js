@@ -7,6 +7,7 @@ import EditStudent from './components/EditStudent';
 import ViewStudent from './components/ViewStudent';
 import Dashboard from './pages/Dashboard';
 
+
 function App() {
   return (
     <Router>
