@@ -8,7 +8,7 @@ const EditStudent = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch(`http://localhost:8080/api/students/${id}`)
+    fetch(`https://studentmanagementsystem-production-6a5a.up.railway.app//${id}`)
       .then((r) => r.json())
       .then((data) => setForm({ name: data.name, email: data.email, course: data.course }))
       .catch(console.error)
