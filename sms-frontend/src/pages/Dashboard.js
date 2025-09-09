@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './Dashboard.css'; // make sure to import the CSS
+import './Dashboard.css'; 
 
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -11,7 +11,7 @@ const Dashboard = () => {
   useEffect(() => {
     async function fetchStudents() {
       try {
-        const res = await fetch('http://localhost:8080/api/students');
+        const res = await fetch('https://studentmanagementsystem-production-6a5a.up.railway.app/api/students');
         if (!res.ok) throw new Error('Failed fetch');
         const data = await res.json();
         setStudentCount(data.length);
@@ -91,7 +91,6 @@ const Dashboard = () => {
                   </div>
                 </div>
               </div>
-              {/* you can add more summary cards here, e.g., recent student, etc. */}
             </div>
           </div>
         </div>
