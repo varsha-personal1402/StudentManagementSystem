@@ -17,7 +17,7 @@ const EditStudent = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await fetch(`https://studentmanagementsystem-production-ab75.up.railway.app/api/students${id}`, {
+    await fetch(`https://studentmanagementsystem-production-ab75.up.railway.app/api/students/${id}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(form),
