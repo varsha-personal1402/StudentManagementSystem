@@ -11,12 +11,12 @@ const Dashboard = () => {
   useEffect(() => {
     async function fetchStudents() {
       try {
-        const res = await fetch('https://studentmanagementsystem-production-6a5a.up.railway.app/api/students');
+        const res = await fetch('https://studentmanagementsystem-production-ab75.up.railway.app/api/students');
         if (!res.ok) throw new Error('Failed fetch');
         const data = await res.json();
         setStudentCount(data.length);
         if (data.length > 0) {
-          setLatestStudentId(data[0].id); // or apply your own logic
+          setLatestStudentId(data[0].id); 
         }
       } catch (e) {
         console.error(e);
