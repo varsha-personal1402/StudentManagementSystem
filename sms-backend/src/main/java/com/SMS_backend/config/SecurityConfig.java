@@ -14,9 +14,10 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
-            .cors(cors -> cors.configurationSource(corsConfigurationSource())) // enable CORS
-            .csrf(csrf -> csrf.disable())
-            .authorizeHttpRequests(auth -> auth.anyRequest().permitAll());
+            .cors() // enable CORS
+            .and()
+            .csrf().disable() // disable CSRF
+            .authorizeHttpRequests(auth -> auth.anyRequest().permitAll()); // allow all requests
 
         return http.build();
     }
@@ -25,12 +26,12 @@ public class SecurityConfig {
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration config = new CorsConfiguration();
         
-        // Exact frontend URL
-        config.setAllowedOrigins(Arrays.asList("https://student-manag-system.netlify.app")); 
+        // Exact frontend URL (important for allowCredentials=true)
+        config.setAllowedOrigins(Arrays.asList("https://student-manag-system.netlify.app"));
         config.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         config.setAllowedHeaders(Arrays.asList("*"));
         config.setAllowCredentials(true); // allow cookies/auth headers
-        
+
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", config);
         return source;
