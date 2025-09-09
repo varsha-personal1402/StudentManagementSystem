@@ -9,7 +9,7 @@ const ViewStudent = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch(`http://localhost:8080/api/students/${id}`)
+    fetch(`https://studentmanagementsystem-production-6a5a.up.railway.app//${id}`)
       .then((r) => {
         if (!r.ok) throw new Error('Not found');
         return r.json();
@@ -42,7 +42,7 @@ const ViewStudent = () => {
             <label>Course</label>
             <div className="value">{student.course}</div>
           </div>
-          {/* add more fields if needed */}
+      
         </div>
         <div className="view-student-footer">
           <div className="left">
