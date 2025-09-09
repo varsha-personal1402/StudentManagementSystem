@@ -1,71 +1,38 @@
 import axios from 'axios';
 
-// Base URL of the backend API
-//const BASE_URL = process.env.REACT_APP_BASE_URL;
-
-// src/StudentService.js
-const BASE_URL =
-  process.env.NODE_ENV === "production"
-    ? "https://your-railway-backend.up.railway.app/api/students"
-    : "http://localhost:8080/api/students";
-
+// Base URL from environment variable
+const BASE_URL = process.env.REACT_APP_BASE_URL;
 
 class StudentService {
-  // Get all students
   getAllStudents() {
-    return axios
-      .get(BASE_URL)
-      .then(response => response.data)
-      .catch(error => {
-        console.error("Error fetching students:", error);
-        throw error;
-      });
+    return axios.get(BASE_URL)
+      .then(res => res.data)
+      .catch(err => { console.error("Error fetching students:", err); throw err; });
   }
 
-  // Get a student by ID
   getStudentById(id) {
-    return axios
-      .get(`${BASE_URL}/${id}`)
-      .then(response => response.data)
-      .catch(error => {
-        console.error(`Error fetching student with ID ${id}:`, error);
-        throw error;
-      });
+    return axios.get(`${BASE_URL}/${id}`)
+      .then(res => res.data)
+      .catch(err => { console.error(`Error fetching student ${id}:`, err); throw err; });
   }
 
-  // Add a new student
   addStudent(student) {
-    return axios
-      .post(BASE_URL, student)
-      .then(response => response.data)
-      .catch(error => {
-        console.error("Error adding student:", error);
-        throw error;
-      });
+    return axios.post(BASE_URL, student)
+      .then(res => res.data)
+      .catch(err => { console.error("Error adding student:", err); throw err; });
   }
 
-  // Update an existing student
   updateStudent(id, student) {
-    return axios
-      .put(`${BASE_URL}/${id}`, student)
-      .then(response => response.data)
-      .catch(error => {
-        console.error(`Error updating student with ID ${id}:`, error);
-        throw error;
-      });
+    return axios.put(`${BASE_URL}/${id}`, student)
+      .then(res => res.data)
+      .catch(err => { console.error(`Error updating student ${id}:`, err); throw err; });
   }
 
-  // Delete a student by ID
   deleteStudent(id) {
-    return axios
-      .delete(`${BASE_URL}/${id}`)
-      .then(response => response.data)
-      .catch(error => {
-        console.error(`Error deleting student with ID ${id}:`, error);
-        throw error;
-      });
+    return axios.delete(`${BASE_URL}/${id}`)
+      .then(res => res.data)
+      .catch(err => { console.error(`Error deleting student ${id}:`, err); throw err; });
   }
 }
 
-// Export a singleton instance
 export default new StudentService();
