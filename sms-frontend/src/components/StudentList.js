@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const API_BASE_URL = process.env.REACT_APP_API_URL || "https://studentmanagementsystem-production-ab75.up.railway.app/api/studemts";
+const API_BASE_URL = process.env.REACT_APP_API_URL || "https://studentmanagementsystem-production-ab75.up.railway.app/api/students";
 
 const StudentList = () => {
   const [students, setStudents] = useState([]);
@@ -9,7 +9,7 @@ const StudentList = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch(`${API_BASE_URL}/api/students`)
+    fetch(`${API_BASE_URL}`)
       .then((r) => {
         if (!r.ok) throw new Error("Failed to fetch students");
         return r.json();
@@ -22,7 +22,7 @@ const StudentList = () => {
   const handleDelete = async (id) => {
     if (!window.confirm("Delete?")) return;
     try {
-      const res = await fetch(`${API_BASE_URL}/api/students/${id}`, { method: "DELETE" });
+      const res = await fetch(`${API_BASE_URL}/${id}`, { method: "DELETE" });
       if (!res.ok) throw new Error("Failed to delete student");
       setStudents((s) => s.filter((st) => st.id !== id));
     } catch (err) {
