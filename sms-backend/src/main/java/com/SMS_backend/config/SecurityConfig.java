@@ -24,7 +24,7 @@ public class SecurityConfig {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration config = new CorsConfiguration();
-        config.setAllowedOriginPatterns(List.of("https://student-manag-system.netlify.app/")); 
+        config.setAllowedOriginPatterns(List.of("https://student-manag-system.netlify.app")); 
         config.setAllowedMethods(List.of("GET","POST","PUT","DELETE","OPTIONS"));
         config.setAllowedHeaders(List.of("*"));
         config.setAllowCredentials(true); // allow credentials (cookies, auth headers)
