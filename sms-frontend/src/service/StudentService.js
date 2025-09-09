@@ -2,7 +2,7 @@ import axios from "axios";
 
 const axiosInstance = axios.create({
   baseURL: process.env.REACT_APP_BASE_URL || "https://studentmanagementsystem-production-ab75.up.railway.app/api/students",
-  withCredentials: true, // important if your backend requires credentials
+  withCredentials: true, 
   headers: {
     "Content-Type": "application/json"
   }
