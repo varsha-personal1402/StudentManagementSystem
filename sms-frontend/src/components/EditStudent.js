@@ -8,7 +8,7 @@ const EditStudent = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch(`https://studentmanagementsystem-production-6a5a.up.railway.app//${id}`)
+    fetch(`https://studentmanagementsystem-production-6a5a.up.railway.app/${id}`)
       .then((r) => r.json())
       .then((data) => setForm({ name: data.name, email: data.email, course: data.course }))
       .catch(console.error)
@@ -17,7 +17,7 @@ const EditStudent = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await fetch(`https://studentmanagementsystem-production-6a5a.up.railway.app//${id}`, {
+    await fetch(`https://studentmanagementsystem-production-6a5a.up.railway.app/${id}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(form),
