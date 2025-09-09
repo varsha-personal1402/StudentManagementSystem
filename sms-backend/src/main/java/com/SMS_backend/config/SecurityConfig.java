@@ -12,12 +12,12 @@ import java.util.Arrays;
 public class SecurityConfig {
 
     @Bean
-    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-            .cors() // enable CORS
+            .cors().configurationSource(corsConfigurationSource())
             .and()
-            .csrf().disable() // disable CSRF
-            .authorizeHttpRequests(auth -> auth.anyRequest().permitAll()); // allow all requests
+            .csrf().disable()
+            .authorizeHttpRequests(auth -> auth.anyRequest().permitAll()); // no authentication at all
 
         return http.build();
     }
@@ -25,12 +25,10 @@ public class SecurityConfig {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration config = new CorsConfiguration();
-        
-        // Exact frontend URL (important for allowCredentials=true)
         config.setAllowedOrigins(Arrays.asList("https://student-manag-system.netlify.app"));
-        config.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
+        config.setAllowedMethods(Arrays.asList("GET","POST","PUT","DELETE","OPTIONS"));
         config.setAllowedHeaders(Arrays.asList("*"));
-        config.setAllowCredentials(true); // allow cookies/auth headers
+        config.setAllowCredentials(true);
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", config);
