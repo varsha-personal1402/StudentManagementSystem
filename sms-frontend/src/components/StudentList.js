@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const API_BASE_URL = process.env.REACT_APP_API_URL || "https://studentmanagementsystem-production-6a5a.up.railway.app/api/students";
+const API_BASE_URL = process.env.REACT_APP_API_URL || "https://studentmanagementsystem-production-6a5a.up.railway.app";
 
 const StudentList = () => {
   const [students, setStudents] = useState([]);
