@@ -1,5 +1,3 @@
-package com.SMS_backend.config;
-
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -11,16 +9,8 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
-            .cors().and()
-            .csrf().disable()
-            .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/api/students/**").permitAll() // allow student APIs
-                .requestMatchers("/login", "/register").permitAll()
-                .anyRequest().authenticated()
-            )
-            .formLogin().disable()
-            .httpBasic(); // optional, if using session-based or JWT
-
+            .csrf(csrf -> csrf.disable()) // Disable CSRF for simplicity
+            .authorizeHttpRequests(auth -> auth.anyRequest().permitAll()); // Allow all requests
         return http.build();
     }
 }
