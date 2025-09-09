@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 // Base URL from environment variable
-const BASE_URL = process.env.REACT_APP_BASE_URL;
+const BASE_URL = "https://studentmanagementsystem-production-6a5a.up.railway.app/api/students";
 
 class StudentService {
   getAllStudents() {
