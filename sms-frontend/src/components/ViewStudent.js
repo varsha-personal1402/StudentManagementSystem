@@ -9,7 +9,7 @@ const ViewStudent = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch(`https://studentmanagementsystem-production-ab75.up.railway.app/api/students/${id}`)
+    fetch(`https://studentmanagementsystem-production-aed5.up.railway.app/api/students/${id}`)
       .then((r) => {
         if (!r.ok) throw new Error('Not found');
         return r.json();
