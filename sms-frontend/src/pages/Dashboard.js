@@ -11,7 +11,7 @@ const Dashboard = () => {
   useEffect(() => {
     async function fetchStudents() {
       try {
-        const res = await fetch('https://studentmanagementsystem-production-ab75.up.railway.app/api/students');
+        const res = await fetch('https://studentmanagementsystem-production-aed5.up.railway.app/api/students');
         if (!res.ok) throw new Error('Failed fetch');
         const data = await res.json();
         setStudentCount(data.length);
