@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const axiosInstance = axios.create({
-  baseURL: process.env.REACT_APP_BASE_URL || "https://studentmanagementsystem-production-ab75.up.railway.app/api/students",
+  baseURL: process.env.REACT_APP_BASE_URL || "https://studentmanagementsystem-production-aed5.up.railway.app/api/students",
   withCredentials: true, 
   headers: {
     "Content-Type": "application/json"
